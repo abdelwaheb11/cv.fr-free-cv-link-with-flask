@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static' , filename='style.css')}}">
+</head>
+<body>
+    <form method="post">
+        <input type="text" style="width: 80%;" value="{{link_cv}}" class="text-input"  name="link" placeholder="Entre le lien de votre cv"/> 
+        <input type="submit" class="btn-input" value="Rechercher">
+    </form>
+    <div>
+        {% if data %}
+            <div id="cv">
+                {{ data | safe }} 
+            </div> 
+            <div class="imprimer">   
+                <button class="btn-input " style="margin-right: 12.5%;" onclick="imprimerCV()">Imprimer le CV en PDF</button>
+           </div>
+        {% else %}
+            <p class="text">Aucun CV n'a encore été recherché.</p>
+        {% endif %}
+    </div>
+
+    
+
+    <script src="{{url_for('static' , filename='main.js')}}" ></script>
+    
+</body>
+</html>
